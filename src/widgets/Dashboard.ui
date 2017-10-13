@@ -10,9 +10,6 @@
     <height>999</height>
    </rect>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
-  </property>
   <property name="windowTitle">
    <string notr="true">Dashboard</string>
   </property>
@@ -56,7 +53,7 @@
          <x>0</x>
          <y>0</y>
          <width>1055</width>
-         <height>974</height>
+         <height>980</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -1025,43 +1022,11 @@
            </item>
            <item>
             <widget class="QTabWidget" name="graphTabs">
-             <property name="styleSheet">
-              <string notr="true">QTabBar
-{
-    qproperty-drawBase: 0;
-}
-
-QTabWidget::pane { /* The tab widget frame */
-    border-top: 0px;
-}
-
-QTabBar::tab {
-    background: rgb(240, 240, 240);
-    border: 0px solid #2180a9;
-    border-bottom-color: #2180a9;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    min-width: 8ex;
-    padding: 5px;
-    margin-bottom: 3px;
-    margin-top: 3px;
-}
-
-QTabBar::tab:selected {
-    background: #2180a9;
-    color: #FFFFFF;
-}
-
-QTabBar::tab:hover {
-    background: #2180a9;      /* #3C879E; */
-    color: #FFFFFF;
-}</string>
-             </property>
              <property name="tabPosition">
               <enum>QTabWidget::North</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="tab_3">
               <attribute name="title">
@@ -1170,7 +1135,6 @@ QTabBar::tab:hover {
                 </spacer>
                </item>
               </layout>
-             <zorder>polarWebView</zorder>
              </widget>
             </widget>
            </item>

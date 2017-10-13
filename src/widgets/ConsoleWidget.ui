@@ -43,9 +43,6 @@
        <pointsize>11</pointsize>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">/*QPlainTextEdit { background: rgb(226, 230, 235) }*/</string>
-     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -82,14 +79,6 @@
      </property>
      <item>
       <widget class="QLineEdit" name="inputLineEdit">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-top: 1px solid rgb(255, 255, 255);</string>
-       </property>
        <property name="frame">
         <bool>false</bool>
        </property>
@@ -105,24 +94,6 @@
       <widget class="QToolButton" name="execButton">
        <property name="toolTip">
         <string>Execute command</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/*
-border: none;
-padding: 2px;
-*/
-
-QToolButton { /* all types of tool button */
-    border: 0px solid rgb(255, 255, 255);
-    border-radius: 6px;
-    border-top: 2px solid rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(255, 255, 255);
-    border-left: 8px solid rgb(255, 255, 255);
-    border-right: 5px solid rgb(255, 255, 255);
-    margin-bottom: 1px;
-    margin-top: 1px;
-	background-color: rgb(255, 255, 255);
-}</string>
        </property>
        <property name="text">
         <string>...</string>

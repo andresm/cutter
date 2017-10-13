@@ -23,62 +23,6 @@
    <iconset>
     <normaloff>:/img/logo-small.png</normaloff>:/img/logo-small.png</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QHeaderView::section {
-     padding: 3px;
-     padding-left: 10px;
-     background-color: rgb(232, 232, 232);
-     border: 2px solid white;
-}
-
-QTabBar
-{
-    qproperty-drawBase: 0;
-}
-
-QTabBar::tab {
-    background: rgb(240, 240, 240);
-    border: 0px solid #2180a9;
-    border-bottom-color: #2180a9;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    min-width: 8ex;
-    padding: 5px;
-	margin-bottom: 3px;
-	margin-top: 3px;
-}
-
-QTabBar::tab:selected {
-    background: #2180a9;
-    color: #FFFFFF;
-}
-
-QTabBar::tab:hover {
-    background: #2180a9;      /* #3C879E; */
-    color: #FFFFFF;
-}
-
-QDockWidget::title {
-    background: rgb(236, 236, 236);
-    text-align: center;
-}
-
-QToolTip {
-	background-color: #444;
-	border: 3px solid #444;
-	color: rgb(232, 232, 232);
-	font: 11pt &quot;Monaco&quot;;
-}
-/*
-QDockWidget::title {
-	background: rgb(64, 66, 68);
-}
-
-QDockWidget {
-	color: rgb(232, 232, 232);
-}
-*/</string>
-  </property>
   <property name="documentMode">
    <bool>false</bool>
   </property>
@@ -112,11 +56,6 @@ QDockWidget {
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QTabWidget::pane { /* The tab widget frame */
-border-top: 0px;
-}</string>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::South</enum>
@@ -188,7 +127,7 @@ border-top: 0px;
      <rect>
       <x>273</x>
       <y>136</y>
-      <width>148</width>
+      <width>154</width>
       <height>167</height>
      </rect>
     </property>
@@ -304,11 +243,6 @@ border-top: 0px;
    <property name="windowTitle">
     <string notr="true">Side toolbar</string>
    </property>
-   <property name="styleSheet">
-    <string notr="true">border: 1px solid rgb(64, 64, 64);
-background-color: rgb(64, 64, 64);
-background: rgb(64, 64, 64);</string>
-   </property>
    <property name="movable">
     <bool>false</bool>
    </property>
@@ -337,22 +271,6 @@ background: rgb(64, 64, 64);</string>
    </property>
    <property name="windowTitle">
     <string notr="true">Main toolbar</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QToolButton { /* all types of tool button */
-    border: 0px solid rgb(255, 255, 255);
-    border-radius: 6px;
-    border-left: 5px solid rgb(255, 255, 255);
-    border-right: 5px solid rgb(255, 255, 255);
-    margin-bottom: 1px;
-    margin-top: 1px;
-	background-color: rgb(255, 255, 255);
-    padding: 2px;
-	color: rgb(255, 0, 0);
-}
-QToolButton .svg-icon path {
-  fill: #ff0000;
-}</string>
    </property>
    <property name="movable">
     <bool>false</bool>

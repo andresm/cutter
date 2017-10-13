@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -72,11 +69,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(228, 228, 228);
-background-color: rgb(48, 48, 48);
-border: 3px solid rgb(48, 48, 48);</string>
-           </property>
            <property name="text">
             <string notr="true">Notifications</string>
            </property>
@@ -104,7 +96,7 @@ border: 3px solid rgb(48, 48, 48);</string>
             <x>0</x>
             <y>0</y>
             <width>226</width>
-            <height>600</height>
+            <height>619</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -159,11 +151,6 @@ border: 3px solid rgb(48, 48, 48);</string>
                    <pointsize>12</pointsize>
                   </font>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 128, 128);
-border-color: rgb(128, 128, 128);</string>
-                 </property>
                  <property name="text">
                   <string>Script</string>
                  </property>
@@ -182,29 +169,6 @@ border-color: rgb(128, 128, 128);</string>
                    <weight>75</weight>
                    <bold>true</bold>
                   </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton { /* all types of tool button */
-     border: 5px solid rgb(128, 128, 128);
-     border-left: 5px solid rgb(128, 128, 128);
-     border-right: 5px solid rgb(128, 128, 128);
-     background-color: rgb(128, 128, 128);
-     color: rgb(255, 255, 255)
- }
-
-QToolButton:hover {
-     border: 5px solid #333;
-     border-left: 5px solid #333;
-	 border-right: 5px solid #333;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 5px solid #2180a9;
-     border-left: 5px solid #2180a9;
-	 border-right: 5px solid #2180a9;
-     background-color: #2180a9;
-}</string>
                  </property>
                  <property name="text">
                   <string>X</string>
@@ -236,9 +200,6 @@ QToolButton:pressed {
                      <pointsize>12</pointsize>
                     </font>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(255, 255, 255);</string>
-                   </property>
                    <property name="text">
                     <string>example.py</string>
                    </property>
@@ -259,9 +220,6 @@ QToolButton:pressed {
                     <font>
                      <pointsize>12</pointsize>
                     </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">color: rgb(191, 191, 191);</string>
                    </property>
                    <property name="text">
                     <string>Execution finished</string>
@@ -322,11 +280,6 @@ QToolButton:pressed {
              </property>
              <item>
               <widget class="QLabel" name="calcLabel">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(228, 228, 228);
-background-color: rgb(48, 48, 48);
-border: 3px solid rgb(48, 48, 48);</string>
-               </property>
                <property name="text">
                 <string>Calculator</string>
                </property>
@@ -334,11 +287,6 @@ border: 3px solid rgb(48, 48, 48);</string>
              </item>
              <item>
               <widget class="QLineEdit" name="calcInput">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 128, 128);
-border-color: rgb(128, 128, 128);</string>
-               </property>
                <property name="frame">
                 <bool>false</bool>
                </property>
@@ -349,10 +297,6 @@ border-color: rgb(128, 128, 128);</string>
              </item>
              <item>
               <widget class="QLabel" name="calcOutput">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-border-color: rgb(128, 128, 128);</string>
-               </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
@@ -386,11 +330,6 @@ border-color: rgb(128, 128, 128);</string>
              </property>
              <item>
               <widget class="QLabel" name="label_13">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(228, 228, 228);
-background-color: rgb(48, 48, 48);
-border: 3px solid rgb(48, 48, 48);</string>
-               </property>
                <property name="text">
                 <string>Assembler</string>
                </property>
@@ -398,11 +337,6 @@ border: 3px solid rgb(48, 48, 48);</string>
              </item>
              <item>
               <widget class="QLabel" name="label_14">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 128, 128);
-border-color: rgb(128, 128, 128);</string>
-               </property>
                <property name="text">
                 <string>Assembly</string>
                </property>
@@ -428,10 +362,6 @@ border-color: rgb(128, 128, 128);</string>
                  <height>50</height>
                 </size>
                </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-border-color: rgb(128, 128, 128);</string>
-               </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
@@ -450,29 +380,6 @@ border-color: rgb(128, 128, 128);</string>
                </property>
                <item>
                 <widget class="QToolButton" name="asm2hex">
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(128, 128, 128);
-     border-left: 3px solid rgb(128, 128, 128);
-     border-right: 3px solid rgb(128, 128, 128);
-     background-color: rgb(128, 128, 128);
-     color: rgb(255, 255, 255)
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 3px solid #333;
-	 border-right: 3px solid #333;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 3px solid #2180a9;
-	 border-right: 3px solid #2180a9;
-     background-color: #2180a9;
-}</string>
-                 </property>
                  <property name="text">
                   <string>v</string>
                  </property>
@@ -480,30 +387,6 @@ QToolButton:pressed {
                </item>
                <item>
                 <widget class="QToolButton" name="hex2asm">
-                 <property name="styleSheet">
-                  <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(128, 128, 128);
-     border-left: 3px solid rgb(128, 128, 128);
-     border-right: 3px solid rgb(128, 128, 128);
-     background-color: rgb(128, 128, 128);
-     color: rgb(255, 255, 255)
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 3px solid #333;
-	 border-right: 3px solid #333;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 3px solid #2180a9;
-	 border-right: 3px solid #2180a9;
-     background-color: #2180a9;
-}
-</string>
-                 </property>
                  <property name="text">
                   <string>^</string>
                  </property>
@@ -513,11 +396,6 @@ QToolButton:pressed {
              </item>
              <item>
               <widget class="QLabel" name="label_15">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(128, 128, 128);
-border-color: rgb(128, 128, 128);</string>
-               </property>
                <property name="text">
                 <string>Hexadecimal</string>
                </property>
@@ -542,10 +420,6 @@ border-color: rgb(128, 128, 128);</string>
                  <width>16777215</width>
                  <height>50</height>
                 </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 255, 255);
-border-color: rgb(128, 128, 128);</string>
                </property>
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
@@ -579,11 +453,6 @@ border-color: rgb(128, 128, 128);</string>
        </item>
        <item>
         <widget class="QLabel" name="label">
-         <property name="styleSheet">
-          <string notr="true">color: rgb(228, 228, 228);
-background-color: rgb(48, 48, 48);
-border: 3px solid rgb(48, 48, 48);</string>
-         </property>
          <property name="text">
           <string notr="true">Quick actions</string>
          </property>
@@ -658,45 +527,6 @@ QToolTip {
            <property name="toolTip">
             <string notr="true">Tabs Up/Down</string>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
-           </property>
            <property name="text">
             <string notr="true"/>
            </property>
@@ -710,45 +540,6 @@ QToolTip {
           <widget class="QToolButton" name="consoleButton">
            <property name="toolTip">
             <string notr="true">Show/Hide Console</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
            </property>
            <property name="text">
             <string notr="true"/>
@@ -766,45 +557,6 @@ QToolTip {
           <widget class="QToolButton" name="themesButton">
            <property name="toolTip">
             <string notr="true">Switch theme</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
            </property>
            <property name="text">
             <string notr="true"/>
@@ -839,45 +591,6 @@ QToolTip {
            <property name="toolTip">
             <string>Toogle resposiveness</string>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
-           </property>
            <property name="text">
             <string>...</string>
            </property>
@@ -897,45 +610,6 @@ QToolTip {
           <widget class="QToolButton" name="webServerButton">
            <property name="toolTip">
             <string notr="true">Start/Stop web server</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
            </property>
            <property name="text">
             <string notr="true">Web</string>
@@ -960,45 +634,6 @@ QToolTip {
            <property name="toolTip">
             <string notr="true">Refresh memory</string>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
-           </property>
            <property name="text">
             <string notr="true"/>
            </property>
@@ -1012,45 +647,6 @@ QToolTip {
           <widget class="QToolButton" name="lockButton">
            <property name="toolTip">
             <string notr="true">Lock/Unlock interface</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 3px solid rgb(105, 105, 105);
-     border-left: 15px solid rgb(105, 105, 105);
-	 border-right: 15px solid rgb(105, 105, 105);
-     background-color: rgb(105, 105, 105);
-	 color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 3px solid #333;
-     border-left: 15px solid #333;
-	 border-right: 15px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolButton:checked {
-     border: 3px solid #2180a9;
-     border-left: 15px solid #2180a9;
-	 border-right: 15px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
            </property>
            <property name="text">
             <string notr="true">...</string>
@@ -1088,38 +684,6 @@ QToolTip {
           <widget class="QToolButton" name="toolButton_2">
            <property name="toolTip">
             <string notr="true">Settings</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton { /* all types of tool button */
-     border: 5px solid rgb(64, 64, 64);
-     border-left: 7px solid rgb(64, 64, 64);
-     border-right: 7px solid rgb(64, 64, 64);
-     border-radius: 0px;
-     background-color: rgb(64, 64, 64);
-     color: rgb(172, 174, 175);
- }
-
-QToolButton:hover {
-     border: 5px solid #333;
-     border-left: 7px solid #333;
-	 border-right: 7px solid #333;
-     border-radius: 0px;
-     background-color: #333;
- }
-
-QToolButton:pressed {
-     border: 5px solid #2180a9;
-     border-left: 7px solid #2180a9;
-	 border-right: 7px solid #2180a9;
-     border-radius: 0px;
-     background-color: #2180a9;
-}
-
-QToolTip {
-	background-color: #2180a9;
-	border: 3px solid #2180a9;
-	color: rgb(232, 232, 232);
-}</string>
            </property>
            <property name="text">
             <string>Settings</string>
