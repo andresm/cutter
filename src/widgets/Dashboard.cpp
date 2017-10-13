@@ -19,7 +19,7 @@ Dashboard::Dashboard(MainWindow *main, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //this->updateContents();
+    this->updateContents();
 }
 
 Dashboard::~Dashboard() {}
@@ -220,4 +220,24 @@ void Dashboard::updateContents()
     code2.replace("MEOW", data);
     code2.replace("WOEM", data);
     ui->polarWebView->setHtml(code2);
+}
+
+void Dashboard::set_theme(QString theme)
+{
+    QFile File(qApp->applicationDirPath() + "/../themes/" + theme + "/Dashboard.qss");
+    File.open(QFile::ReadOnly);
+    QString StyleSheet = QLatin1String(File.readAll());
+    File.close();
+    this->setStyleSheet(StyleSheet);
+}
+
+void Dashboard::dark_theme()
+{
+    this->set_theme("dark");
+}
+
+void Dashboard::def_theme()
+{
+    this->setStyleSheet("");
+    this->ui->graphTabs->setStyleSheet("");
 }

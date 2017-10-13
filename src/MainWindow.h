@@ -81,6 +81,8 @@ public slots:
 
     void def_theme();
 
+    void set_theme(QString theme);
+
     void on_actionEntry_points_triggered();
     void on_actionFunctions_triggered();
     void on_actionImports_triggered();

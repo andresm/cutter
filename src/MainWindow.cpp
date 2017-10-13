@@ -471,20 +471,33 @@ void MainWindow::readSettings()
     this->responsive = settings.value("responsive").toBool();
 }
 
+void MainWindow::set_theme(QString theme)
+{
+    QFile File(qApp->applicationDirPath() + "/../themes/" + theme + "/MainWindow.qss");
+    File.open(QFile::ReadOnly);
+    QString StyleSheet = QLatin1String(File.readAll());
+    File.close();
+    this->setStyleSheet(StyleSheet);
+}
+
 void MainWindow::dark()
 {
-    qApp->setStyleSheet("QPlainTextEdit { background-color: rgb(64, 64, 64); color: rgb(222, 222, 222);} QTextEdit { background-color: rgb(64, 64, 64); color: rgb(222, 222, 222);} ");
+    this->set_theme("dark");
+    this->dashboardDock->dark_theme();
     this->memoryDock->switchTheme(true);
     QSettings settings;
     settings.setValue("dark", true);
+    settings.setValue("theme", "dark");
 }
 
 void MainWindow::def_theme()
 {
-    qApp->setStyleSheet("");
+    this->setStyleSheet("");
+    this->dashboardDock->def_theme();
     this->memoryDock->switchTheme(false);
     QSettings settings;
     settings.setValue("dark", false);
+    settings.setValue("theme", "default");
 }
 
 /*

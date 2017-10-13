@@ -23,6 +23,12 @@ public:
 
     void refresh() override;
 
+    void def_theme();
+
+    void dark_theme();
+
+    void set_theme(QString theme);
+
 private:
     void updateContents();
 
