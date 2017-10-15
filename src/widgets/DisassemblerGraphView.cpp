@@ -9,6 +9,8 @@
 #include <QMimeData>
 #include <QFileDialog>
 #include <QMessageBox>
+#include "utils/Configuration.h"
+#include "utils/Colors.h"
 
 #ifdef _WIN32
 #undef min
@@ -74,7 +76,7 @@ DisassemblerGraphView::DisassemblerGraphView(QWidget *parent)
     setupContextMenu();
 
     //Connect to bridge
-    connect(CutterCore::getInstance(), SIGNAL(seekChanged(RVA)), this, SLOT(on_seekChanged(RVA)));
+    connect(Core(), SIGNAL(seekChanged(RVA)), this, SLOT(on_seekChanged(RVA)));
     //connect(Bridge::getBridge(), SIGNAL(loadGraph(BridgeCFGraphList*, duint)), this, SLOT(loadGraphSlot(BridgeCFGraphList*, duint)));
     //connect(Bridge::getBridge(), SIGNAL(graphAt(duint)), this, SLOT(graphAtSlot(duint)));
     //connect(Bridge::getBridge(), SIGNAL(updateGraph()), this, SLOT(updateGraphSlot()));
@@ -84,7 +86,7 @@ DisassemblerGraphView::DisassemblerGraphView(QWidget *parent)
 
     //Connect to config
     //connect(Config(), SIGNAL(colorsUpdated()), this, SLOT(colorsUpdatedSlot()));
-    //connect(Config(), SIGNAL(fontsUpdated()), this, SLOT(fontsUpdatedSlot()));
+    connect(Config(), SIGNAL(fontsUpdated()), this, SLOT(fontsUpdatedSlot()));
     //connect(Config(), SIGNAL(shortcutsUpdated()), this, SLOT(shortcutsUpdatedSlot()));
     //connect(Config(), SIGNAL(tokenizerConfigUpdated()), this, SLOT(tokenizerConfigUpdatedSlot()));
 
@@ -98,7 +100,7 @@ DisassemblerGraphView::~DisassemblerGraphView()
 
 void DisassemblerGraphView::initFont()
 {
-    setFont(QFont("Monospace", 10));
+    setFont(Config()->getFont());
     QFontMetricsF metrics(this->font());
     this->baseline = int(metrics.ascent());
     this->charWidth = metrics.width('X');
@@ -734,9 +736,9 @@ void DisassemblerGraphView::mouseDoubleClickEvent(QMouseEvent* event)
     {
         duint instr = this->getInstrForMouseEvent(event);
         //DbgCmdExec(QString("graph dis.branchdest(%1), silent").arg(ToPtrString(instr)).toUtf8().constData());
-        QList<XrefDescription> refs = CutterCore::getInstance()->getXRefs(instr, false, false);
+        QList<XrefDescription> refs = Core()->getXRefs(instr, false, false);
         if (refs.length()) {
-            CutterCore::getInstance()->seek(refs.at(0).to);
+            Core()->seek(refs.at(0).to);
         }
         if (refs.length() > 1) {
             qWarning() << "Too many references here. Weird behaviour expected.";
@@ -1547,7 +1549,7 @@ void DisassemblerGraphView::tokenizerConfigUpdatedSlot()
 void DisassemblerGraphView::loadCurrentGraph()
 {
     // Read functions
-    QJsonDocument functionsDoc = CutterCore::getInstance()->cmdj("agj");
+    QJsonDocument functionsDoc = Core()->cmdj("agj");
     QJsonArray functions = functionsDoc.array();
 
     Analysis anal;
@@ -1588,16 +1590,15 @@ void DisassemblerGraphView::loadCurrentGraph()
             QJsonObject op = opRef.toObject();
             Instr i;
             i.addr = op["offset"].toInt();
-            // TODO
             RichTextPainter::List richText;
-
-            RichTextPainter::CustomRichText_t assembly;
-            assembly.highlight = false;
-            assembly.flags = RichTextPainter::FlagNone;
-            assembly.text = op["opcode"].toString();
-
-            richText.insert(richText.begin(), assembly);
-
+            Colors::colorizeAssembly(richText, op["opcode"].toString(), op["type_num"].toVariant().toULongLong());
+            if (op["comment"].toString().length()) {
+                RichTextPainter::CustomRichText_t comment;
+                comment.text = QString(" ; %1").arg(QByteArray::fromBase64(op["comment"].toString().toLocal8Bit()).data());
+                comment.textColor = ConfigColor("comment");
+                comment.flags = RichTextPainter::FlagColor;
+                richText.insert(richText.end(), comment);
+            }
             i.text = Text(richText);
             b.instrs.push_back(i);
         }
@@ -1609,112 +1610,6 @@ void DisassemblerGraphView::loadCurrentGraph()
     this->analysis = anal;
     this->function = this->analysis.entry;
     this->ready = true;
-    /*
-    bool showGraphRva = ConfigBool("Gui", "ShowGraphRva");
-    Analysis anal;
-    anal.update_id = this->update_id + 1;
-    anal.entry = currentGraph.entryPoint;
-    anal.ready = true;
-    {
-        Function func;
-        func.entry = currentGraph.entryPoint;
-        func.ready = true;
-        func.update_id = anal.update_id;
-        {
-            for(const auto & nodeIt : currentGraph.nodes)
-            {
-                const BridgeCFNode & node = nodeIt.second;
-                Block block;
-                block.entry = node.instrs.empty() ? node.start : node.instrs[0].addr;
-                block.exits = node.exits;
-                block.false_path = node.brfalse;
-                block.true_path = node.brtrue;
-                block.terminal = node.terminal;
-                block.indirectcall = node.indirectcall;
-                block.header_text = Text(getSymbolicName(block.entry), mLabelColor, mLabelBackgroundColor);
-                {
-                    Instr instr;
-                    for(const BridgeCFInstruction & nodeInstr : node.instrs)
-                    {
-                        auto addr = nodeInstr.addr;
-                        currentBlockMap[addr] = block.entry;
-                        Instruction_t instrTok = disasm.DisassembleAt((byte_t*)nodeInstr.data, sizeof(nodeInstr.data), 0, addr, false);
-                        RichTextPainter::List richText;
-                        CapstoneTokenizer::TokenToRichText(instrTok.tokens, richText, 0);
-
-                        // add rva to node instruction text
-                        if(showGraphRva)
-                        {
-                            RichTextPainter::CustomRichText_t rvaText;
-                            rvaText.highlight = false;
-                            rvaText.textColor = mAddressColor;
-                            rvaText.textBackground = mAddressBackgroundColor;
-                            rvaText.text = QString().number(instrTok.rva, 16).toUpper().trimmed() + "  ";
-                            rvaText.flags = rvaText.textBackground.alpha() ? RichTextPainter::FlagAll : RichTextPainter::FlagColor;
-                            richText.insert(richText.begin(), rvaText);
-                        }
-
-                        auto size = instrTok.length;
-                        instr.addr = addr;
-                        instr.opcode.resize(size);
-                        for(int j = 0; j < size; j++)
-                            instr.opcode[j] = nodeInstr.data[j];
-
-                        QString comment;
-                        bool autoComment = false;
-                        RichTextPainter::CustomRichText_t commentText;
-                        commentText.highlight = false;
-                        char label[MAX_LABEL_SIZE] = "";
-                        if(GetCommentFormat(addr, comment, &autoComment))
-                        {
-                            if(autoComment)
-                            {
-                                commentText.textColor = mAutoCommentColor;
-                                commentText.textBackground = mAutoCommentBackgroundColor;
-                            }
-                            else //user comment
-                            {
-                                commentText.textColor = mCommentColor;
-                                commentText.textBackground = mCommentBackgroundColor;
-                            }
-                            commentText.text = QString("; ") + comment;
-                            //add to text
-                        }
-                        else if(DbgGetLabelAt(addr, SEG_DEFAULT, label) && addr != block.entry) // label but no comment
-                        {
-                            commentText.textColor = mLabelColor;
-                            commentText.textBackground = mLabelBackgroundColor;
-                            commentText.text = QString("; ") + label;
-                        }
-                        commentText.flags = commentText.textBackground.alpha() ? RichTextPainter::FlagAll : RichTextPainter::FlagColor;
-                        if(commentText.text.length())
-                        {
-                            RichTextPainter::CustomRichText_t spaceText;
-                            spaceText.highlight = false;
-                            spaceText.flags = RichTextPainter::FlagNone;
-                            spaceText.text = " ";
-                            richText.push_back(spaceText);
-                            richText.push_back(commentText);
-                        }
-                        instr.text = Text(richText);
-
-                        //The summary contains calls, rets, user comments and string references
-                        if(!onlySummary ||
-                                instrTok.branchType == Instruction_t::Call ||
-                                instrTok.instStr.startsWith("ret", Qt::CaseInsensitive) ||
-                                (!commentText.text.isEmpty() && !autoComment) ||
-                                commentText.text.contains('\"'))
-                            block.instrs.push_back(instr);
-                    }
-                }
-                func.blocks.push_back(block);
-            }
-        }
-        anal.functions.insert({func.entry, func});
-    }
-    this->analysis = anal;
-    this->function = this->analysis.entry;
-    */
 }
 
 
@@ -1898,14 +1793,14 @@ void DisassemblerGraphView::followDisassemblerSlot()
 
 void DisassemblerGraphView::colorsUpdatedSlot()
 {
-    disassemblyBackgroundColor = Qt::white;
-    graphNodeColor = Qt::black;
-    backgroundColor = QColor(220, 240, 255);
-    disassemblySelectionColor = Qt::yellow;
+    disassemblyBackgroundColor = ConfigColor("gui.background");
+    graphNodeColor = ConfigColor("gui.border");
+    backgroundColor = ConfigColor("gui.alt_background");
+    disassemblySelectionColor = ConfigColor("gui.highlight");
 
-    jmpColor = Qt::blue;
-    brtrueColor = Qt::green;
-    brfalseColor = Qt::red;
+    jmpColor = ConfigColor("graph.trufae");
+    brtrueColor = ConfigColor("graph.true");
+    brfalseColor = ConfigColor("graph.false");
     /*disassemblyBackgroundColor = ConfigColor("GraphNodeBackgroundColor");
     if(!disassemblyBackgroundColor.alpha())
         disassemblyBackgroundColor = ConfigColor("DisassemblyBackgroundColor");

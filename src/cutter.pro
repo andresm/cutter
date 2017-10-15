@@ -7,7 +7,7 @@ VERSION = 1.0
 
 ICON = img/Enso.icns
 
-QT += core gui widgets webengine webenginewidgets
+QT += core gui widgets
 QT_CONFIG -= no-pkg-config
 CONFIG += c++11
 
@@ -52,7 +52,6 @@ SOURCES += \
     dialogs/AsmOptionsDialog.cpp \
     dialogs/CreateNewDialog.cpp \
     dialogs/NewFileDialog.cpp \
-    RadareWebServer.cpp \
     AnalThread.cpp \
     widgets/CodeGraphic.cpp \
     widgets/CommentsWidget.cpp \
@@ -76,7 +75,9 @@ SOURCES += \
     menus/DisassemblyContextMenu.cpp \
     widgets/DisassemblyWidget.cpp \
     widgets/SidebarWidget.cpp \
-    widgets/HexdumpWidget.cpp
+    widgets/HexdumpWidget.cpp \
+    utils/Configuration.cpp \
+    utils/Colors.cpp
 
 HEADERS  += \
     cutter.h \
@@ -96,11 +97,9 @@ HEADERS  += \
     MainWindow.h \
     utils/Highlighter.h \
     utils/MdHighlighter.h \
-    Settings.h \
     dialogs/OptionsDialog.h \
     dialogs/CreateNewDialog.h \
     dialogs/NewFileDialog.h \
-    RadareWebServer.h \
     AnalThread.h \
     widgets/CodeGraphic.h \
     widgets/CommentsWidget.h \
@@ -125,7 +124,9 @@ HEADERS  += \
     menus/DisassemblyContextMenu.h \
     widgets/DisassemblyWidget.h \
     widgets/SidebarWidget.h \
-    widgets/HexdumpWidget.h
+    widgets/HexdumpWidget.h \
+    utils/Configuration.h \
+    utils/Colors.h
 
 FORMS    += \
     widgets/PreviewWidget.ui \

@@ -1,0 +1,4 @@
+ 
+QWebEngineView::QWebEnginePage  {
+    background-color: rgb(64, 00, 00);
+}

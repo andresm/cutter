@@ -96,7 +96,7 @@
             <x>0</x>
             <y>0</y>
             <width>226</width>
-            <height>619</height>
+            <height>602</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -603,29 +603,6 @@ QToolTip {
            </property>
            <property name="checked">
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="webServerButton">
-           <property name="toolTip">
-            <string notr="true">Start/Stop web server</string>
-           </property>
-           <property name="text">
-            <string notr="true">Web</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../resources.qrc">
-             <normaloff>:/img/icons/cloud_white.svg</normaloff>:/img/icons/cloud_white.svg</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonIconOnly</enum>
            </property>
           </widget>
          </item>

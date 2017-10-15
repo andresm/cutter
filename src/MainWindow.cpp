@@ -58,7 +58,6 @@
 #include "widgets/SdbDock.h"
 #include "widgets/Omnibar.h"
 #include "widgets/ConsoleWidget.h"
-#include "Settings.h"
 #include "dialogs/OptionsDialog.h"
 #include "widgets/EntrypointWidget.h"
 #include "widgets/DisassemblerGraphView.h"
@@ -109,10 +108,10 @@ MainWindow::MainWindow(QWidget *parent) :
     sdbDock(nullptr),
     sidebar_action(nullptr),
     sectionsDock(nullptr),
-    consoleWidget(nullptr),
-    webserver(core)
+    consoleWidget(nullptr)
 {
     doLock = false;
+    configuration = new Configuration();
 }
 
 MainWindow::~MainWindow()
@@ -372,7 +371,6 @@ void MainWindow::finalizeOpen()
     // Add fortune message
     addOutput("\n" + core->cmd("fo"));
     //previewDock->setWindowTitle("entry0");
-    start_web_server();
     showMaximized();
     // Initialize syntax highlighters
     notepadDock->highlightPreview();
@@ -386,30 +384,6 @@ void MainWindow::saveProject()
     //this->add_debug_output(notes);
     this->core->cmd("Pnj " + notes);
     this->addOutput(tr("Project saved: ") + project_name);
-}
-
-void MainWindow::start_web_server()
-{
-    // Start web server
-    webserver.start();
-}
-
-
-void MainWindow::setWebServerState(bool start)
-{
-    if (start)
-    {
-        webserver.start();
-
-        // Open web interface on default browser
-        // ballessay: well isn't this possible with =H&
-        //QString link = "http://localhost:9090/";
-        //QDesktopServices::openUrl(QUrl(link));
-    }
-    else
-    {
-        webserver.stop();
-    }
 }
 
 void MainWindow::toggleSideBarTheme()
@@ -486,23 +460,23 @@ void MainWindow::dark()
 {
     this->set_theme("dark");
     this->dashboardDock->dark_theme();
-    this->previewDock->switchTheme(true);
-    //qApp->setStyleSheet("QPlainTextEdit { background-color: rgb(64, 64, 64); color: rgb(222, 222, 222);} QTextEdit { background-color: rgb(64, 64, 64); color: rgb(222, 222, 222);} ");
     QSettings settings;
     settings.setValue("dark", true);
     settings.setValue("theme", "dark");
+    // TODO: emit a signal for theme
 }
 
 void MainWindow::def_theme()
 {
-    //this->setStyleSheet("");
+    this->set_theme("default");
     this->dashboardDock->def_theme();
     //qApp->setStyleSheet("");
-    this->previewDock->switchTheme(false);
 
     QSettings settings;
     settings.setValue("dark", false);
     settings.setValue("theme", "default");
+    // TODO: emit a signal for theme
+
 }
 
 /*
@@ -758,11 +732,6 @@ void MainWindow::on_actionAssembler_triggered()
     {
         this->on_actionShow_Hide_mainsidebar_triggered();
     }
-}
-
-void MainWindow::on_actionStart_Web_Server_triggered()
-{
-    setWebServerState(ui->actionStart_Web_Server->isChecked());
 }
 
 void MainWindow::on_actionDisasAdd_comment_triggered()
